@@ -1,8 +1,4 @@
-Perfect 👍 Darshu — I’ll create a **detailed, professional, portfolio-ready README** for your Alumni Management System that looks strong on GitHub.
 
-You can copy everything below into your `README.md`.
-
----
 
 # 🎓 Alumni Management System
 
