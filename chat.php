@@ -3,8 +3,21 @@ session_start();
 require_once 'config/db.php';
 require_once 'includes/auth.php';
 
-requireAlumni();
-requireCollege();
+// Redirect to login if not logged in
+if (!isLoggedIn()) {
+    header("Location: login.php");
+    exit;
+}
+// Redirect admin to admin panel (chat is alumni-only)
+if (($_SESSION['role'] ?? '') === 'admin') {
+    header("Location: admin_dashboard.php");
+    exit;
+}
+// Ensure college is selected
+if (!isset($_SESSION['current_college'])) {
+    header("Location: select_college.php");
+    exit;
+}
 
 $uid = $_SESSION['user_id'];
 $college = $_SESSION['current_college'];
