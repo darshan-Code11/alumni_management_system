@@ -18,9 +18,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_event'])) {
             $stmt = mysqli_prepare($conn, "INSERT INTO events (title, description, event_date, college_name) VALUES (?, ?, ?, ?)");
             mysqli_stmt_bind_param($stmt, 'ssss', $title, $desc, $edate, $college);
             if (mysqli_stmt_execute($stmt)) {
-                $success = "Event \"$title\" added successfully!";
+                $success = "Event \"" . htmlspecialchars($title) . "\" added successfully!";
             } else {
-                $error = "Failed to add event. Please try again.";
+                $error = "Failed to add event: " . mysqli_error($conn);
             }
         } else {
             $error = "Title and Date are required.";
@@ -30,8 +30,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_event'])) {
     }
 }
 
-// Fetch all events for this college
-$events = mysqli_query($conn, "SELECT * FROM events WHERE college_name='$college' ORDER BY event_date DESC");
+// Fetch ALL events — no college_name filter to avoid mismatch issues
+$events = mysqli_query($conn, "SELECT * FROM events ORDER BY event_date DESC");
 $totalEvents = mysqli_num_rows($events);
 ?>
 <?php include 'includes/header.php'; ?>
