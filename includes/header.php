@@ -67,6 +67,11 @@ $current = basename($_SERVER['PHP_SELF']);
             <li class="nav-item">
               <a class="nav-link <?= $current=='dashboard.php'?'active':'' ?>" href="dashboard.php">Dashboard</a>
             </li>
+            <li class="nav-item">
+              <a class="nav-link <?= $current=='chat.php'?'active':'' ?>" href="chat.php">
+                <i class="fas fa-comments me-1"></i>Chat
+              </a>
+            </li>
           <?php endif; ?>
           <li class="nav-item">
             <a class="btn btn-warning btn-sm px-3 ms-2" href="logout.php">
