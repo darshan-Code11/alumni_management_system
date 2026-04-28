@@ -49,6 +49,15 @@ $current = basename($_SERVER['PHP_SELF']);
         <li class="nav-item">
           <a class="nav-link <?= $current=='directory.php'?'active':'' ?>" href="directory.php">Discover</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link <?= $current=='events.php'?'active':'' ?>" href="events.php">Events</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link <?= $current=='jobs.php'?'active':'' ?>" href="jobs.php">Jobs</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link <?= $current=='about.php'?'active':'' ?>" href="about.php">About</a>
+        </li>
         <?php if (isLoggedIn()): ?>
           <?php if ($_SESSION['role'] === 'admin'): ?>
             <li class="nav-item">
